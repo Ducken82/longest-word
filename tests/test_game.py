@@ -14,3 +14,8 @@ class TestGame:
         assert game.is_valid("BAROQUE") is True  # Mot présent dans la grille
         assert game.is_valid("BOWER") is True  # Autre mot valide
         assert game.is_valid("HOUSE") is False  # Contient des lettres absentes de la grille
+    def test_unknown_word_is_invalid(self):
+        """Un mot qui n'existe pas dans le dictionnaire anglais ne doit pas être valide"""
+        new_game = Game()
+        new_game.grid = list('KWIENFUQW')  # On force une grille spécifique
+        assert new_game.is_valid('FEUN') is False
